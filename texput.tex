@@ -1,0 +1,260 @@
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "<none>"
+%%% End:
+
+\title{Differential (predictive) coding}
+
+\author{Vicente González Ruiz}
+
+\maketitle
+
+\section{Motivation}
+\begin{itemize}
+\item
+  Usually happens that the differences between consecutive PCM
+  (Pulse-Code Modulation)~\cite{oppenheim1999discrete, oppenheim2014discrete} samples
+
+  \[
+    e[n] = s[n] - s[n-1],
+  \]
+
+  tend to have a smaller variance (and therefore, smaller entropy) than
+  the original (\(s\)) ones
+
+  \[
+    \sigma^2(e) \leq \sigma^2(s),
+  \]
+
+  which potentially provides better lossless compression ratios for
+  \(e\) than for \(s\).
+\item
+  Finally, notice that by definition, if a source of ``noise'' (such as
+  the quantization noise) has not been introduced during the encoding
+  process, differential encoding is a fully reversible process:
+
+  \[
+    s[n] = e[n] + s[n-1].
+  \]
+\end{itemize}
+
+\section{Lab}
+
+\begin{itemize}
+\tightlist
+\item
+  Compute \(e\) signal for the
+  \href{https://upload.wikimedia.org/wikipedia/commons/3/3a/Jfk_berlin_address_high.ogg}{Jfk\_berlin\_address\_high.ogg}
+  \(s\) signal and plot the probability density function (also known as
+  the histogram) of \(e\). Note: use Python and Matplotlib, and insert
+  the code here.
+\end{itemize}
+
+\href{https://nbviewer.jupyter.org/github/vicente-gonzalez-ruiz/differential_coding/blob/master/LZW.ipynb}{IPython notebook}
+
+\section{DPCM (Differential PCM)}
+\begin{itemize}
+\item
+  Signals sampled at Nyquist rate exhibit correlation between
+  consecutive samples. Therefore, the variance of the first difference
+
+  \begin{equation}
+    \sigma^2(\{s[n+1]-s[n]\}_{n=0}^{N-1})
+  \end{equation}
+
+  will be smaller than the variance of the signal itself
+
+  \begin{equation}
+    \sigma^2(\{s[n+1]-s[n]\}_{n=0}^{N-1}) < \sigma^2(s) = \sigma_s^2.
+  \end{equation}
+\item
+  In general, DPCM consist in computing the residual (error signal):
+
+  \begin{equation}
+    e[n] = s[n] - \hat{s}[n]
+  \end{equation}
+
+  where for the simplest case:
+
+  \begin{equation}
+    \hat{s}[n] = s[n-1]
+  \end{equation}
+\item
+  Used in the \href{https://en.wikipedia.org/wiki/G.726}{G.726
+  standard}.
+\end{itemize}
+
+\section{ADPCM (Adaptive DPCM)}
+\begin{itemize}
+\tightlist
+\item
+  In orter to minimize \(\sigma^2_e\), the predictor \(P\) can change
+  its behaviour depending on the characteristics of \(s\).
+\end{itemize}
+
+\section{Forward adaptive prediction}
+\begin{itemize}
+\tightlist
+\item
+  Splits the input into blocks, optimizes the predictor for each block
+  and sends with each ADPCM block the predictor coefficients as side
+  information.
+\end{itemize}
+
+\section{Optimal prediction based on Weiner-Hopf optimization}
+\begin{itemize}
+\item
+  The predictor can be any structure capable of producing a signal
+  \begin{equation}
+    \hat{s} \approx s.
+  \end{equation}
+\item
+  In the case of using LPC (Linear Predictive Coding), where
+
+  \begin{equation}
+    \hat{s}[n] = \sum_{i=1}^M a_i s[n-i],
+  \end{equation}
+
+  \(\{a_i\}_{i=1}^M\) are the LPC coefficients and \(M\) is the
+  predictor order.
+\item
+  Optimal foeffs \(\{a_i\}\) can be found when they minimize the
+  variance of the residue (error signal)
+
+  \begin{equation}
+    \sigma_e^2 = \text{E}\big[(s[n]-\sum_{i=1}^M a_i s[n-i])^2\big].
+  \end{equation}
+\item
+  For this, it must me hold that
+
+  \begin{equation}
+    \left.
+      \begin{array}{c}
+        \displaystyle\frac{\partial\sigma_e^2}{\partial a_1} = -2\text{E}\Big[\big(s[n]-\displaystyle\sum_{i=1}^M a_i s[n-i]\big)s[n-1]\Big] = 0 \\
+        \displaystyle\frac{\partial\sigma_e^2}{\partial a_2} = -2\text{E}\Big[\big(s[n]-\displaystyle\sum_{i=1}^M a_i s[n-i]\big)s[n-2\Big] = 0 \\
+        \vdots \\
+        \displaystyle\frac{\partial\sigma_e^2}{\partial a_M} = -2\text{E}\Big[\big(s[n]-\displaystyle\sum_{i=1}^M a_i s[n-i]\big)s[n-M]\Big] = 0 
+      \end{array}
+    \right\rbrace.
+  \end{equation}
+\item
+  Appying expectations we get that
+  
+  \begin{equation}
+    \left.
+      \begin{array}{c}
+        \displaystyle\sum_{i=1}^M a_i \text{R}_{ss}(i-1) = \text{R}_{ss}(1) \\
+        \displaystyle\sum_{i=1}^M a_i \text{R}_{ss}(i-2) = \text{R}_{ss}(2) \\
+        \vdots\\
+        \displaystyle\sum_{i=1}^M a_i \text{R}_{ss}(i-M) = \text{R}_{ss}(M) \\
+      \end{array}
+    \right\rbrace,
+    \tag{Weiner-Hopf equations}
+    \label{Weiner-Hopf equations}
+  \end{equation}
+
+  where \(\text{R}_{ss}(k)\) is the autorrelation function of \(s\),
+  defined as
+
+  \begin{equation}
+    \text{R}_{ss}(k) = \text{E}\big[s[n]s[n-k]\big] = \frac{1}{M-k}\sum_{i=1}^{M-k} s[i]s[i+k].
+    \tag{autocorrelation}
+    \label{autocorrelation}
+  \end{equation}
+\end{itemize}
+
+\section{Lab}
+For each \(M=\{1,2,3\}\), determine the optimal predictor for the audio
+\href{https://upload.wikimedia.org/wikipedia/commons/3/3a/Jfk_berlin_address_high.ogg}{Jfk\_berlin\_address\_high.ogg},
+using Weiner-Hopf optimization. Next, compute the variance of \(e\) for
+each prediction order.
+
+\section{Backward adaptive prediction}
+\begin{itemize}
+\tightlist
+\item
+  Both, the encoder and the decoder can constinuosly adapt the
+  prediction to the characteristics of \(s\), if both only use the
+  information that is available at the decoder.
+\end{itemize}
+
+\section{Adaptive prediction based on Least Mean Squared (LMS) algorithm}
+\begin{itemize}
+\item
+  As we know,
+
+  \begin{equation}
+    e[n] = s[n] - \hat{s}[n] = s[n] - \sum_{i=1}^M a_is[n-i].
+  \end{equation}
+\item
+  Our objective is to minimize \(e[n]\), which is the same that
+  minimizing the energy of the prediction error \(e^2\), by controlling
+  the \(\{a_i\}_{i=1}^M\) coefficients.
+\item
+  Suppose that we can control iteratively these coefficients, by
+  incrementing or decrementing them with a proportionality constant
+  \(\alpha\) (the larger \(\alpha\), the faster the convergence but
+  possiblely the oscillation, and viceversa). Let's denote \(a_i^{[n]}\)
+  the value of coeff \(a_i\) at iteration \(n\) of the algorithm. If
+  happens, for example, that
+
+  \begin{equation}
+    \frac{\partial e^2[n]}{\partial a_i} < 0
+  \end{equation}
+
+  (the squared prediction error for iteration \(n\) has been increased
+  compared to the previous iteration), then the prediction
+  \(\hat{s}[n]\) should have been larger, and viceversa. Let's define
+  the iterative control of \(\{a_i\}_{i=1}^M\) coefficients as
+
+  \begin{equation}
+    \Big\{a_i^{[n+1]} = a_i^{[n]} - \alpha\frac{\partial e^2[n]}{\partial a_i}\Big\}_{i=1}^M
+    \tag{LMS\_idea}
+  \end{equation}
+
+\item
+  Applying derivatives we obtain for \(a_i\) that
+
+  \begin{equation}
+    \frac{\partial e^2[n]}{\partial a_i} = \frac{\partial\Big(s[n] - \sum_{i=1}^M a_is[n-i]\Big)^2}{\partial a_i} = -2\Big(s[n] - \sum_{i=1}^M a_is[n-i]\Big)s[n-i] = -2e[n]s[n-i].
+    \end{equation}
+\item
+  Substituting this expression in Eq. (LMS\_idea), we get that
+
+  \begin{equation}
+    \Big\{a_i^{[n+1]} = a_i^{[n]} +2\alpha e[n]s[n-i]\Big\}_{i=1}^M.
+    \tag{LMS\_control}
+  \end{equation}
+\item
+  Notice that, in a backward adaptive prediction scheme, both elements
+  \(e[n]\) and \(s[n-i]\) are known at iteration \(n\) at both, the
+  encoder and the decoder.
+\end{itemize}
+
+\section{Lossy DPCM}
+\begin{itemize}
+\item
+  The prediction error is quantized to decrease the variance
+
+  \begin{equation}
+    \tilde{e}[n] = Q(e[n]),
+  \end{equation}
+
+  where
+
+  \begin{equation}
+    e[n] = s[n] - \hat{\tilde{s}}[n],
+  \end{equation}
+
+  where
+
+  \begin{equation}
+    \tilde{s}[n] = \hat{\tilde{s}}[n] + \tilde{e}[n].
+  \end{equation}
+\item
+  Used in
+  \href{https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding\#Video_coding_layer}{hybrid
+  (lossy DPCM/transform) video coding}~\cite{cutler1952differential}.
+\end{itemize}
+
+\bibliography{signal-processing}

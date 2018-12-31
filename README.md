@@ -1,1 +1,3 @@
-[Click me](https://cdn.rawgit.com/vicente-gonzalez-ruiz/differential_coding/master/index.html).
+# Differential (predictive) encoding
+
+[Click me](https://vicente-gonzalez-ruiz.github.io/differential_coding/).
