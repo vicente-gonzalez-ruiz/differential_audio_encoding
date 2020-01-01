@@ -1,6 +1,6 @@
 <!DOCTYPE html> 
 <html> 
-<head> <title>Diﬀerential (predictive) coding</title> 
+<head> <title>Diﬀerential (Predictive) Coding</title> 
 <meta charset="UTF-8" /> 
 <meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)" /> 
 <link rel="stylesheet" type="text/css" href="index.css" /> 
@@ -20,40 +20,44 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
 
                                                                   
 
-<h2 class="titleHead">Diﬀerential (predictive) coding</h2>
+<h2 class="titleHead">Diﬀerential (Predictive) Coding</h2>
  <div class="author" ><span 
 class="ecrm-1200">Vicente Gonz</span><span 
 class="ecrm-1200">á</span><span 
 class="ecrm-1200">lez Ruiz</span></div><br />
 <div class="date" ><span 
-class="ecrm-1200">December 31, 2018</span></div>
+class="ecrm-1200">January 1, 2020</span></div>
    </div>
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Contents</h3>
    <div class="tableofcontents">
    <span class="sectionToc" >1 <a 
-href="#x1-10001" id="QQ2-1-1">Motivation</a></span>
+href="#x1-20001" id="QQ2-1-2">Motivation</a></span>
 <br />   <span class="sectionToc" >2 <a 
-href="#x1-20002" id="QQ2-1-2">Lab</a></span>
+href="#x1-30002" id="QQ2-1-3">Lab</a></span>
 <br />   <span class="sectionToc" >3 <a 
-href="#x1-30003" id="QQ2-1-3">DPCM (Diﬀerential PCM)</a></span>
+href="#x1-40003" id="QQ2-1-4">DPCM (Diﬀerential PCM)</a></span>
 <br />   <span class="sectionToc" >4 <a 
-href="#x1-40004" id="QQ2-1-4">ADPCM (Adaptive DPCM)</a></span>
+href="#x1-50004" id="QQ2-1-5">ADPCM (Adaptive DPCM)</a></span>
 <br />   <span class="sectionToc" >5 <a 
-href="#x1-50005" id="QQ2-1-5">Forward adaptive prediction</a></span>
+href="#x1-60005" id="QQ2-1-6">Forward adaptive prediction</a></span>
 <br />   <span class="sectionToc" >6 <a 
-href="#x1-60006" id="QQ2-1-6">Optimal prediction based on Weiner-Hopf optimization</a></span>
+href="#x1-70006" id="QQ2-1-7">Optimal prediction based on Weiner-Hopf optimization</a></span>
 <br />   <span class="sectionToc" >7 <a 
-href="#x1-70007" id="QQ2-1-7">Lab</a></span>
+href="#x1-80007" id="QQ2-1-8">Lab</a></span>
 <br />   <span class="sectionToc" >8 <a 
-href="#x1-80008" id="QQ2-1-8">Backward adaptive prediction</a></span>
+href="#x1-90008" id="QQ2-1-9">Backward adaptive prediction</a></span>
 <br />   <span class="sectionToc" >9 <a 
-href="#x1-90009" id="QQ2-1-9">Adaptive prediction based on Least Mean Squared (LMS) algorithm</a></span>
+href="#x1-100009" id="QQ2-1-10">Adaptive prediction based on Least Mean Squared (LMS) algorithm</a></span>
 <br />   <span class="sectionToc" >10 <a 
-href="#x1-1000010" id="QQ2-1-10">Lossy DPCM</a></span>
-<br />   <span class="likesectionToc" ><a 
-href="#x1-1100010" id="QQ2-1-11">References</a></span>
+href="#x1-1100010" id="QQ2-1-11">Lossy DPCM</a></span>
+<br />   <span class="sectionToc" ><a 
+href="#Q1-1-13">References</a></span>
    </div>
+<!--l. 6--><p class="noindent" >
+</p>
    <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
- id="x1-10001"></a>Motivation</h3>
+ id="x1-20001"></a>Motivation</h3>
      <ul class="itemize1">
      <li class="itemize">Usually   happens   that   the   diﬀerences   between   consecutive   PCM
      (Pulse-Code Modulation) <span class="cite">[<a 
@@ -62,7 +66,7 @@ href="#Xoppenheim2014discrete">3</a>]</span> samples
                                                                   
 
                                                                   
-<div class="par-math-display"><!--l. 18--><math 
+<div class="par-math-display"><!--l. 13--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -84,16 +88,16 @@ class="MathClass-bin">−</mo> <mn>1</mn></mrow><mo
 class="MathClass-close">]</mo></mrow><mo 
 class="MathClass-punc">,</mo>
 </mrow></math></div>
-     <!--l. 20--><p class="nopar" >
-     </p><!--l. 22--><p class="noindent" >tend to have a smaller variance (and therefore, smaller entropy) than the
-     original (<!--l. 23--><math 
+     <!--l. 15--><p class="nopar" >
+     </p><!--l. 17--><p class="noindent" >tend to have a smaller variance (and therefore, smaller entropy) than the
+     original (<!--l. 18--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >s</mi></mrow></math>)
      ones
 </p>
-<div class="par-math-display"><!--l. 25--><math 
+<div class="par-math-display"><!--l. 20--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -115,13 +119,13 @@ class="MathClass-open">(</mo><mrow><mi
 class="MathClass-close">)</mo></mrow><mo 
 class="MathClass-punc">,</mo>
 </mrow></math></div>
-     <!--l. 27--><p class="nopar" >
-     </p><!--l. 29--><p class="noindent" >which potentially provides better lossless compression ratios for <!--l. 30--><math 
+     <!--l. 22--><p class="nopar" >
+     </p><!--l. 24--><p class="noindent" >which potentially provides better lossless compression ratios for <!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >e</mi></mrow></math>
-     than for <!--l. 30--><math 
+     than for <!--l. 25--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
@@ -133,7 +137,7 @@ display="inline" ><mrow
                                                                   
 
                                                                   
-<div class="par-math-display"><!--l. 36--><math 
+<div class="par-math-display"><!--l. 32--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" ><mrow 
 >
@@ -155,45 +159,45 @@ class="MathClass-bin">−</mo> <mn>1</mn></mrow><mo
 class="MathClass-close">]</mo></mrow><mo 
 class="MathClass-punc">.</mo>
 </mrow></math></div>
-     <!--l. 38--><p class="nopar" ></p></li></ul>
-<!--l. 41--><p class="noindent" >
+     <!--l. 34--><p class="nopar" ></p></li></ul>
+<!--l. 37--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
- id="x1-20002"></a>Lab</h3>
+ id="x1-30002"></a>Lab</h3>
      <ul class="itemize1">
-     <li class="itemize">Compute <!--l. 46--><math 
+     <li class="itemize">Compute <!--l. 42--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >e</mi></mrow></math>
      signal for the <a 
-href="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jfk_berlin_address_high.ogg" >Jfk_berlin_address_high.ogg</a> <!--l. 48--><math 
+href="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jfk_berlin_address_high.ogg" >Jfk_berlin_address_high.ogg</a> <!--l. 44--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >s</mi></mrow></math>
      signal and plot the probability density function (also known as the histogram)
-     of <!--l. 49--><math 
+     of <!--l. 45--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >e</mi></mrow></math>.
      Note: use Python and Matplotlib, and insert the code here.</li></ul>
-<!--l. 53--><p class="noindent" ><a 
+<!--l. 49--><p class="noindent" ><a 
 href="https://nbviewer.jupyter.org/github/vicente-gonzalez-ruiz/differential_coding/blob/master/DPCM.ipynb" >IPython notebook</a>
-</p><!--l. 55--><p class="noindent" >
+</p><!--l. 51--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
- id="x1-30003"></a>DPCM (Diﬀerential PCM)</h3>
+ id="x1-40003"></a>DPCM (Diﬀerential PCM)</h3>
      <ul class="itemize1">
      <li class="itemize">Signals sampled at Nyquist rate exhibit correlation between consecutive
      samples. Therefore, the variance of the ﬁrst diﬀerence
      <table class="equation"><tr><td> <a 
- id="x1-3001r1"></a>
+ id="x1-4001r1"></a>
                                                                   
 
                                                                   
-     <!--l. 61--><math 
+     <!--l. 57--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                  <msup><mrow 
@@ -225,11 +229,11 @@ class="MathClass-bin">−</mo><mn>1</mn></mrow></msubsup
 ></mrow><mo 
 class="MathClass-close">)</mo></mrow>
 </math></td><td class="eq-no">(1)</td></tr></table>
-     <!--l. 65--><p class="noindent" >will be smaller than the variance of the signal itself
+     <!--l. 61--><p class="noindent" >will be smaller than the variance of the signal itself
 </p>
      <table class="equation"><tr><td> <a 
- id="x1-3002r2"></a>
-     <!--l. 67--><math 
+ id="x1-4002r2"></a>
+     <!--l. 63--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                        <msup><mrow 
@@ -281,8 +285,8 @@ class="MathClass-punc">.</mo>
      </li>
      <li class="itemize">In general, DPCM consist in computing the residual (error signal):
      <table class="equation"><tr><td> <a 
- id="x1-3003r3"></a>
-     <!--l. 73--><math 
+ id="x1-4003r3"></a>
+     <!--l. 69--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                         <mi 
@@ -301,14 +305,14 @@ class="MathClass-open">[</mo><mrow><mi
 >n</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow>
 </math></td><td class="eq-no">(3)</td></tr></table>
-     <!--l. 77--><p class="noindent" >where for the simplest case:
+     <!--l. 73--><p class="noindent" >where for the simplest case:
 </p>
      <table class="equation"><tr><td> <a 
- id="x1-3004r4"></a>
+ id="x1-4004r4"></a>
                                                                   
 
                                                                   
-     <!--l. 79--><math 
+     <!--l. 75--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                          <mi 
@@ -326,12 +330,12 @@ class="MathClass-close">]</mo></mrow>
      </li>
      <li class="itemize">Used in the <a 
 href="https://en.wikipedia.org/wiki/G.726" >G.726 standard</a>.</li></ul>
-<!--l. 87--><p class="noindent" >
+<!--l. 83--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">4   </span> <a 
- id="x1-40004"></a>ADPCM (Adaptive DPCM)</h3>
+ id="x1-50004"></a>ADPCM (Adaptive DPCM)</h3>
      <ul class="itemize1">
-     <li class="itemize">In orter to minimize <!--l. 91--><math 
+     <li class="itemize">In orter to minimize <!--l. 87--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msubsup><mrow 
@@ -341,36 +345,36 @@ display="inline" ><mrow
 >e</mi></mrow><mrow 
 ><mn>2</mn></mrow></msubsup 
 ></mrow></math>,
-     the predictor <!--l. 91--><math 
+     the predictor <!--l. 87--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >P</mi></mrow></math>
-     can change its behaviour depending on the characteristics of <!--l. 92--><math 
+     can change its behaviour depending on the characteristics of <!--l. 88--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >s</mi></mrow></math>.</li></ul>
-<!--l. 95--><p class="noindent" >
+<!--l. 91--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">5   </span> <a 
- id="x1-50005"></a>Forward adaptive prediction</h3>
+ id="x1-60005"></a>Forward adaptive prediction</h3>
      <ul class="itemize1">
      <li class="itemize">Splits  the  input  into  blocks,  optimizes  the  predictor  for  each  block
      and  sends  with  each  ADPCM  block  the  predictor  coeﬃcients  as  side
      information.</li></ul>
-<!--l. 104--><p class="noindent" >
+<!--l. 100--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">6   </span> <a 
- id="x1-60006"></a>Optimal prediction based on Weiner-Hopf optimization</h3>
+ id="x1-70006"></a>Optimal prediction based on Weiner-Hopf optimization</h3>
                                                                   
 
                                                                   
      <ul class="itemize1">
      <li class="itemize">The predictor can be any structure capable of producing a signal <table class="equation"><tr><td>
      <a 
- id="x1-6001r5"></a>
-     <!--l. 108--><math 
+ id="x1-7001r5"></a>
+     <!--l. 104--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                                <mi 
@@ -382,8 +386,8 @@ class="MathClass-punc">.</mo>
      </li>
      <li class="itemize">In the case of using LPC (Linear Predictive Coding), where
      <table class="equation"><tr><td> <a 
- id="x1-6002r6"></a>
-     <!--l. 114--><math 
+ id="x1-7002r6"></a>
+     <!--l. 110--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                   <mi 
@@ -415,7 +419,7 @@ class="MathClass-bin">−</mo> <mi
 class="MathClass-close">]</mo></mrow><mo 
 class="MathClass-punc">,</mo>
 </math></td><td class="eq-no">(6)</td></tr></table>
-     <!--l. 118--><p class="noindent" ><!--l. 118--><math 
+     <!--l. 114--><p class="noindent" ><!--l. 114--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msubsup><mrow 
@@ -433,14 +437,14 @@ class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
 ><mi 
 >M</mi></mrow></msubsup 
 ></mrow></math> are the LPC
-     coeﬃcients and <!--l. 118--><math 
+     coeﬃcients and <!--l. 114--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >M</mi></mrow></math>
      is the predictor order.
      </p></li>
-     <li class="itemize">Optimal foeﬀs <!--l. 121--><math 
+     <li class="itemize">Optimal foeﬀs <!--l. 117--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mrow ><mo 
@@ -454,11 +458,11 @@ class="MathClass-close">}</mo></mrow></mrow></math>
      can be found when they minimize the variance of the residue (error
      signal)
      <table class="equation"><tr><td> <a 
- id="x1-6003r7"></a>
+ id="x1-7003r7"></a>
                                                                   
 
                                                                   
-     <!--l. 124--><math 
+     <!--l. 120--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                             <msubsup><mrow 
@@ -508,8 +512,8 @@ class="MathClass-punc">.</mo>
      </li>
      <li class="itemize">For this, it must me hold that
      <table class="equation"><tr><td> <a 
- id="x1-6004r8"></a>
-     <!--l. 130--><math 
+ id="x1-7004r8"></a>
+     <!--l. 126--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
 <mfenced separators="" 
@@ -692,11 +696,11 @@ class="MathClass-punc">.</mo>
      </li>
      <li class="itemize">Appying expectations we get that
      <table class="equation"><tr><td> <a 
- id="x1-6005r9"></a>
+ id="x1-7005r9"></a>
                                                                   
 
                                                                   
-     <!--l. 143--><math 
+     <!--l. 139--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
 <mfenced separators="" 
@@ -818,10 +822,10 @@ class="array"  columnalign="center"> </mtd></mtr>
 <!--c--></mtable>                                                                                                       </mrow></mfenced><mo 
 class="MathClass-punc">,</mo>
                                                                                         <mstyle 
-   id="x1-6006r8"  class="label" ></mstyle><!--endlabel-->
+   id="x1-7006r8"  class="label" ></mstyle><!--endlabel-->
 </math></td><td class="eq-no">(Weiner-Hopf equations)<a 
- id="x1-6007r8"></a></td></tr></table>
-     <!--l. 156--><p class="noindent" >where <!--l. 156--><math 
+ id="x1-7007r8"></a></td></tr></table>
+     <!--l. 152--><p class="noindent" >where <!--l. 152--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msub><mrow 
@@ -834,7 +838,7 @@ class="text"><mtext  >R</mtext></mstyle></mrow><mrow
 class="MathClass-open">(</mo><mrow><mi 
 >k</mi></mrow><mo 
 class="MathClass-close">)</mo></mrow></mrow></math> is the
-     autorrelation function of <!--l. 156--><math 
+     autorrelation function of <!--l. 152--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
@@ -842,8 +846,8 @@ display="inline" ><mrow
      deﬁned as
 </p>
      <table class="equation"><tr><td> <a 
- id="x1-6008r9"></a>
-     <!--l. 159--><math 
+ id="x1-7008r9"></a>
+     <!--l. 155--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation"><msub><mrow 
 >
@@ -900,15 +904,15 @@ class="MathClass-bin">+</mo> <mi
 class="MathClass-close">]</mo></mrow><mo 
 class="MathClass-punc">.</mo>
                                                                                         <mstyle 
-   id="x1-6009r8"  class="label" ></mstyle><!--endlabel-->
+   id="x1-7009r8"  class="label" ></mstyle><!--endlabel-->
 </math></td><td class="eq-no">(autocorrelation)<a 
- id="x1-6010r8"></a></td></tr></table>
+ id="x1-7010r8"></a></td></tr></table>
      </li></ul>
-<!--l. 166--><p class="noindent" >
+<!--l. 162--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">7   </span> <a 
- id="x1-70007"></a>Lab</h3>
-<!--l. 167--><p class="noindent" >For each <!--l. 167--><math 
+ id="x1-80007"></a>Lab</h3>
+<!--l. 163--><p class="noindent" >For each <!--l. 163--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
@@ -921,36 +925,36 @@ class="MathClass-close">}</mo></mrow></mrow></math>,
 determine the optimal predictor for the audio <a 
 href="https://upload.wikimedia.org/wikipedia/commons/3/3a/Jfk_berlin_address_high.ogg" >Jfk_berlin_address_high.ogg</a>,
 using Weiner-Hopf optimization. Next, compute the variance of
-<!--l. 169--><math 
+<!--l. 165--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >e</mi></mrow></math> for
 each prediction order.
-</p><!--l. 172--><p class="noindent" >
+</p><!--l. 168--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">8   </span> <a 
- id="x1-80008"></a>Backward adaptive prediction</h3>
+ id="x1-90008"></a>Backward adaptive prediction</h3>
                                                                   
 
                                                                   
      <ul class="itemize1">
      <li class="itemize">Both, the encoder and the decoder can constinuosly adapt the prediction to
-     the characteristics of <!--l. 177--><math 
+     the characteristics of <!--l. 173--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >s</mi></mrow></math>,
      if both only use the information that is available at the decoder.</li></ul>
-<!--l. 181--><p class="noindent" >
+<!--l. 177--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">9   </span> <a 
- id="x1-90009"></a>Adaptive prediction based on Least Mean Squared (LMS) algorithm</h3>
+ id="x1-100009"></a>Adaptive prediction based on Least Mean Squared (LMS) algorithm</h3>
      <ul class="itemize1">
      <li class="itemize">As we know,
      <table class="equation"><tr><td> <a 
- id="x1-9001r9"></a>
-     <!--l. 186--><math 
+ id="x1-10001r9"></a>
+     <!--l. 182--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                      <mi 
@@ -998,7 +1002,7 @@ class="MathClass-close">]</mo></mrow><mo
 class="MathClass-punc">.</mo>
 </math></td><td class="eq-no">(9)</td></tr></table>
      </li>
-     <li class="itemize">Our objective is to minimize <!--l. 190--><math 
+     <li class="itemize">Our objective is to minimize <!--l. 186--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
@@ -1007,7 +1011,7 @@ class="MathClass-open">[</mo><mrow><mi
 >n</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></mrow></math>,
      which is the same that minimizing the energy of the prediction error
-     <!--l. 191--><math 
+     <!--l. 187--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msup><mrow 
@@ -1015,7 +1019,7 @@ display="inline" ><mrow
 >e</mi></mrow><mrow 
 ><mn>2</mn></mrow></msup 
 ></mrow></math>, by
-     controlling the <!--l. 192--><math 
+     controlling the <!--l. 188--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msubsup><mrow 
@@ -1037,18 +1041,18 @@ class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
      </li>
      <li class="itemize">Suppose that we can control iteratively these coeﬃcients, by
      incrementing or decrementing them with a proportionality constant
-     <!--l. 196--><math 
+     <!--l. 192--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >α</mi></mrow></math> (the
-     larger <!--l. 196--><math 
+     larger <!--l. 192--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >α</mi></mrow></math>,
      the faster the convergence but possiblely the oscillation, and viceversa). Let’s denote
-     <!--l. 197--><math 
+     <!--l. 193--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msubsup><mrow 
@@ -1061,7 +1065,7 @@ class="MathClass-open">[</mo><mrow><mi
 >n</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></mrow></msubsup 
 ></mrow></math> the value
-     of coeﬀ <!--l. 198--><math 
+     of coeﬀ <!--l. 194--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msub><mrow 
@@ -1070,18 +1074,18 @@ display="inline" ><mrow
 ><mi 
 >i</mi></mrow></msub 
 ></mrow></math> at
-     iteration <!--l. 198--><math 
+     iteration <!--l. 194--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >n</mi></mrow></math>
      of the algorithm. If happens, for example, that
      <table class="equation"><tr><td> <a 
- id="x1-9002r10"></a>
+ id="x1-10002r10"></a>
                                                                   
 
                                                                   
-     <!--l. 201--><math 
+     <!--l. 197--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                              <mfrac><mrow 
@@ -1104,14 +1108,14 @@ class="MathClass-close">]</mo></mrow></mrow>
 ></mrow></mfrac>   <mo 
 class="MathClass-rel">&#x003C;</mo> <mn>0</mn>
 </math></td><td class="eq-no">(10)</td></tr></table>
-     <!--l. 205--><p class="noindent" >(the squared prediction error for iteration
-     <!--l. 205--><math 
+     <!--l. 201--><p class="noindent" >(the squared prediction error for iteration
+     <!--l. 201--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >n</mi></mrow></math>
      has been increased compared to the previous iteration), then the prediction
-     <!--l. 207--><math 
+     <!--l. 203--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
@@ -1120,7 +1124,7 @@ class="MathClass-open">[</mo><mrow><mi
 >n</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></mrow></math>
      should have been larger, and viceversa. Let’s deﬁne the iterative control of
-     <!--l. 208--><math 
+     <!--l. 204--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msubsup><mrow 
@@ -1141,8 +1145,8 @@ class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
      coeﬃcients as
 </p>
      <table class="equation"><tr><td> <a 
- id="x1-9003r11"></a>
-     <!--l. 210--><math 
+ id="x1-10003r11"></a>
+     <!--l. 206--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                 <mstyle mathsize="1.61em"><mfenced separators="" 
@@ -1196,12 +1200,12 @@ class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
 >M</mi></mrow></msubsup 
 >
                                                                                                           <mstyle 
-   id="x1-9004r10"  class="label" ></mstyle><!--endlabel-->
+   id="x1-10004r10"  class="label" ></mstyle><!--endlabel-->
 </math></td><td class="eq-no">(LMS_idea)<a 
- id="x1-9005r10"></a></td></tr></table>
+ id="x1-10005r10"></a></td></tr></table>
      </li>
      <li class="itemize">Applying derivatives we obtain for
-     <!--l. 216--><math 
+     <!--l. 212--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><msub><mrow 
@@ -1212,11 +1216,11 @@ display="inline" ><mrow
 ></mrow></math>
      that
      <table class="equation"><tr><td> <a 
- id="x1-9006r11"></a>
+ id="x1-10006r11"></a>
                                                                   
 
                                                                   
-     <!--l. 218--><math 
+     <!--l. 214--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
 <mfrac><mrow 
@@ -1331,8 +1335,8 @@ class="MathClass-punc">.</mo>
      </li>
      <li class="itemize">Substituting this expression in Eq. (LMS_idea), we get that
      <table class="equation"><tr><td> <a 
- id="x1-9007r12"></a>
-     <!--l. 224--><math 
+ id="x1-10007r12"></a>
+     <!--l. 220--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                             <mstyle mathsize="1.61em"><mfenced separators="" 
@@ -1381,12 +1385,12 @@ class="MathClass-rel">=</mo><mn>1</mn></mrow><mrow
 ><mo 
 class="MathClass-punc">.</mo>
                                                                                         <mstyle 
-   id="x1-9008r11"  class="label" ></mstyle><!--endlabel-->
+   id="x1-10008r11"  class="label" ></mstyle><!--endlabel-->
 </math></td><td class="eq-no">(LMS_control)<a 
- id="x1-9009r11"></a></td></tr></table>
+ id="x1-10009r11"></a></td></tr></table>
      </li>
      <li class="itemize">Notice that, in a backward adaptive prediction scheme, both elements
-     <!--l. 230--><math 
+     <!--l. 226--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
@@ -1394,7 +1398,7 @@ display="inline" ><mrow
 class="MathClass-open">[</mo><mrow><mi 
 >n</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></mrow></math> and
-     <!--l. 230--><math 
+     <!--l. 226--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
@@ -1404,24 +1408,24 @@ class="MathClass-open">[</mo><mrow><mi
 class="MathClass-bin">−</mo> <mi 
 >i</mi></mrow><mo 
 class="MathClass-close">]</mo></mrow></mrow></math> are known
-     at iteration <!--l. 230--><math 
+     at iteration <!--l. 226--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="inline" ><mrow 
 ><mi 
 >n</mi></mrow></math>
      at both, the encoder and the decoder.</li></ul>
-<!--l. 234--><p class="noindent" >
+<!--l. 230--><p class="noindent" >
 </p>
    <h3 class="sectionHead"><span class="titlemark">10   </span> <a 
- id="x1-1000010"></a>Lossy DPCM</h3>
+ id="x1-1100010"></a>Lossy DPCM</h3>
      <ul class="itemize1">
      <li class="itemize">The prediction error is quantized to decrease the variance
      <table class="equation"><tr><td> <a 
- id="x1-10001r12"></a>
+ id="x1-11001r12"></a>
                                                                   
 
                                                                   
-     <!--l. 239--><math 
+     <!--l. 235--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                          <mi 
@@ -1439,11 +1443,11 @@ class="MathClass-close">]</mo></mrow></mrow><mo
 class="MathClass-close">)</mo></mrow><mo 
 class="MathClass-punc">,</mo>
 </math></td><td class="eq-no">(12)</td></tr></table>
-     <!--l. 243--><p class="noindent" >where
+     <!--l. 239--><p class="noindent" >where
 </p>
      <table class="equation"><tr><td> <a 
- id="x1-10002r13"></a>
-     <!--l. 245--><math 
+ id="x1-11002r13"></a>
+     <!--l. 241--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                       <mi 
@@ -1469,11 +1473,11 @@ class="MathClass-open">[</mo><mrow><mi
 class="MathClass-close">]</mo></mrow><mo 
 class="MathClass-punc">,</mo>
 </math></td><td class="eq-no">(13)</td></tr></table>
-     <!--l. 249--><p class="noindent" >where
+     <!--l. 245--><p class="noindent" >where
 </p>
      <table class="equation"><tr><td> <a 
- id="x1-10003r14"></a>
-     <!--l. 251--><math 
+ id="x1-11003r14"></a>
+     <!--l. 247--><math 
  xmlns="http://www.w3.org/1998/Math/MathML"  
 display="block" class="equation">
                                     <mover 
@@ -1512,7 +1516,7 @@ href="#Xcutler1952differential">1</a>]</span>.</li></ul>
 <!--l. 1--><p class="noindent" >
 </p>
    <h3 class="likesectionHead"><a 
- id="x1-1100010"></a>References</h3>
+ id="x1-1200010"></a>References</h3>
 <!--l. 1--><p class="noindent" >
    </p><div class="thebibliography">
    <p class="bibitem" ><span class="biblabel">
@@ -1537,6 +1541,8 @@ class="ecti-1000">Discrete-time  signal</span>
 class="ecti-1000">processing</span></a>. Pearson Education, 2014.
 </p>
    </div>
+<a 
+ id="Q1-1-13"></a>
     
 </body> 
 </html>

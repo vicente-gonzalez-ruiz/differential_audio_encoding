@@ -1,26 +1,21 @@
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "<none>"
-%%% End:
-
-\title{Differential (predictive) coding}
-
+\title{Differential (Predictive) Coding}
 \author{Vicente González Ruiz}
-
 \maketitle
+\tableofcontents
 
 \section{Motivation}
 \begin{itemize}
 \item
   Usually happens that the differences between consecutive PCM
-  (Pulse-Code Modulation)~\cite{oppenheim1999discrete, oppenheim2014discrete} samples
+  (Pulse-Code Modulation)~\cite{oppenheim1999discrete,
+  oppenheim2014discrete} samples
 
   \[
     e[n] = s[n] - s[n-1],
   \]
 
-  tend to have a smaller variance (and therefore, smaller entropy) than
-  the original (\(s\)) ones
+  tend to have a smaller variance (and therefore, smaller entropy)
+  than the original (\(s\)) ones
 
   \[
     \sigma^2(e) \leq \sigma^2(s),
@@ -29,9 +24,10 @@
   which potentially provides better lossless compression ratios for
   \(e\) than for \(s\).
 \item
-  Finally, notice that by definition, if a source of ``noise'' (such as
-  the quantization noise) has not been introduced during the encoding
-  process, differential encoding is a fully reversible process:
+  Finally, notice that by definition, if a source of ``noise'' (such
+  as the quantization noise) has not been introduced during the
+  encoding process, differential encoding is a fully reversible
+  process:
 
   \[
     s[n] = e[n] + s[n-1].
@@ -45,9 +41,9 @@
 \item
   Compute \(e\) signal for the
   \href{https://upload.wikimedia.org/wikipedia/commons/3/3a/Jfk_berlin_address_high.ogg}{Jfk\_berlin\_address\_high.ogg}
-  \(s\) signal and plot the probability density function (also known as
-  the histogram) of \(e\). Note: use Python and Matplotlib, and insert
-  the code here.
+  \(s\) signal and plot the probability density function (also known
+  as the histogram) of \(e\). Note: use Python and Matplotlib, and
+  insert the code here.
 \end{itemize}
 
 \href{https://nbviewer.jupyter.org/github/vicente-gonzalez-ruiz/differential_coding/blob/master/DPCM.ipynb}{IPython notebook}
@@ -257,4 +253,4 @@ each prediction order.
   (lossy DPCM/transform) video coding}~\cite{cutler1952differential}.
 \end{itemize}
 
-\bibliography{signal-processing,text-compression}
+\bibliography{signal-processing, text-compression}
